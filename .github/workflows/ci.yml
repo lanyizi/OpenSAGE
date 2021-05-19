@@ -12,14 +12,10 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os: [windows-latest]
         include:
         - os: windows-latest
           runtime: win-x64
-        - os: macos-latest
-          runtime: osx-x64
-        - os: ubuntu-latest
-          runtime: linux-x64
 
     runs-on: ${{ matrix.os }}
 
@@ -57,15 +53,7 @@ jobs:
       with:
         name: win-x64
 
-    - name: Download Artifacts osx-x64
-      uses: actions/download-artifact@v1
-      with:
-        name: osx-x64
-
-    - name: Download Artifacts linux-x64
-      uses: actions/download-artifact@v1
-      with:
-        name: linux-x64
+   
 
     - name: Create Release
       id: create_release
